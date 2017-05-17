@@ -1,0 +1,45 @@
+div.Login {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  height: 15%;
+  width: 50%;
+  font-size: 150%;
+  /*background-color: yellow;*/
+  z-index: 100;
+}
+
+.LoginSignu {
+  position: absolute;
+  width: 20%;
+  height: 60%;
+  top: 20%;
+  /*background-color: red;*/
+  border-radius: 35%;
+  border-color: white;
+  border-style: solid;
+  border-width: 1%;
+  color: white;
+  z-index: 100;
+}
+
+#LoginButton {
+  left: 20%;
+}
+
+#SignupButton {
+  left: 60%;
+}
+
+.LoginTable {
+  display: block;
+  position: absolute;
+  top: 25%;
+  left: 27.5%;
+  width: 45%;
+  height: 50%;
+  border-radius: 10%;
+  background-color: yellow;
+  z-index: 100;
+}
+
