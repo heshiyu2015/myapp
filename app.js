@@ -5,9 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var index = require('./routes/index');//主路由
 
 var app = express();
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +24,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);//任何的请求都先给总路由
+
+/*app.use('/', function(req, res){
+  //res.sendFile(__dirname + '/views/index.ejs');
+	res.render('chat', {});
+});
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html',{});
+});
+io.on('connection', function(socket){//socket.io的监听，有用户进入聊天页面就会得知，有用户退出也会知道
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+});*/
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
