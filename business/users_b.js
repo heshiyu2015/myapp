@@ -1,8 +1,21 @@
+var user_mongo = require('../data/user_mongo');
+
 var users_b = {
 
 }
 
-users_b.reply = function(req, res, next) {
+users_b.sign_up = function (req, res, next) {
+  user_mongo.createUser(req.body,function(result) {
+  	res.write(JSON.stringify(result.ops[0]));
+    res.end();
+  });
+}
+
+users_b.login  = function (req, res, next) {
+
+};
+
+users_b.reply = function (req, res, next) {
   //res.render('index', { title: 'Users' });
   var data = {
     name : 'heshiyu'

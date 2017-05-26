@@ -3,7 +3,7 @@ var cha_room_b = {
 };
 
 cha_room_b.showChatpage = function(req, res, next) {
-  res.render('chat', { 
+  res.render('chat1', { 
   	
   });
 };

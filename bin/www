@@ -4,16 +4,14 @@
  * Module dependencies.
  */
 var mainObj = require('../mainObj');
-var app = mainObj.app;
+var chat_server = require('../chat_server/chat_server');
 var debug = require('debug')('myapp:server');
-//var http = mainObj.http;
-
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+mainObj.app.set('port', port);
 
 /**
  * Create HTTP server.
@@ -28,23 +26,13 @@ var server = mainObj.server;
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-mainObj.io.on('connection', function(socket){
-  global.number++;
-  console.log('a user connected');
-  mainObj.io.emit('outin','a user connected');
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    mainObj.io.emit('chat message', msg);
-  });
-  socket.on('disconnect', function(){
-    global.number--;
-    console.log('user disconnected');
-    mainObj.io.emit('outin','a user connected');
-  });
-});
+
+chat_server();//make the chat_room activated
 /**
  * Normalize a port into a number, string, or false.
  */
+
+
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
